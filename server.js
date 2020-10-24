@@ -3,9 +3,9 @@ const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io").listen(server);
 const port = 8080;
-
+let ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
 io.on("connection", socket => {
-    console.log("a user connected :D");
+    console.log("a user connected :D = "+ip);
 
 
     //PARTIE MESSAGES 
