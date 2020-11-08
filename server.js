@@ -3,9 +3,8 @@ const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io").listen(server);
 const port = 8080;
-let ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
 io.on("connection", socket => {
-    console.log("a user connected :D = "+ip);
+    console.log("a user connected :D = ");
 
 
     //PARTIE MESSAGES 
@@ -77,6 +76,13 @@ io.on("connection", socket => {
         io.emit(data.idGroup, data.data);
         console.log('ChatGroupAnonym Action Received');
         console.log('ChatGroup data = ', data);
+    })
+
+    //Action dans une conversation
+    socket.on('ChatConversation', data => {
+        io.emit(data.idUserToSend+'-chat', data.data);
+        console.log('ChatConversation Action Received');
+        console.log('ChatConversation sended data = ', data);
     })
 });
 
