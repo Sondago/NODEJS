@@ -69,6 +69,13 @@ io.on("connection", socket => {
         console.log('new Content Created');
     })
 
+    //Partie Chat Secret
+    socket.on('SecretChat', data => {
+        io.emit('SecretChat', data.data);
+        console.log('Secret Chat Action Received');
+        console.log('Secret Chat sended data = ', data);
+    })
+
     //PARIES ANONYM 
 
     //Action dans le chat
