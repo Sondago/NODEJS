@@ -92,4 +92,4 @@ io.on("connection", socket => {
     })
 });
 
-httpServer.listen(8080, () => console.log("server running on port:" + port));
+httpServer.listen(8080, () => console.log("server running"));
