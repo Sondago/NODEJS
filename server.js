@@ -75,7 +75,16 @@ io.on("connection", socket => {
         console.log('Secret Chat sended data = ', data);
     })
 
-    //PARIES ANONYM 
+
+    //PARTIE NIGHTROOM
+
+    //Action dans le chat
+    socket.on('NightRoom', data => {
+        io.emit(data.id, data.data);
+        console.log('NightRoom Action Received', data);
+    })
+
+    //PARIE ANONYM 
 
     //Action dans le chat
     socket.on('ChatGroup', data => {
