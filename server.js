@@ -54,6 +54,7 @@ io.on("connection", socket => {
     })
 
 
+
     //PARTIES CHAT BAN
 
     //Action dans le chat
@@ -66,6 +67,12 @@ io.on("connection", socket => {
     socket.on('receivedNewContent', data => {
         io.emit('receivedNewContent', data);
         console.log('new Content Created');
+    })
+
+    //Nouveaux contenus dans la catégorie age
+    socket.on('receivedNewAgeContent', data => {
+        io.emit('receivedNewAgeContent', data);
+        console.log('new Content Created age', data);
     })
 
     //Partie Chat Secret
