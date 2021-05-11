@@ -32,18 +32,21 @@ io.on("connection", socket => {
     //PARTIE GROUPES
 
     //Reception d'un message dans un groupe et renvoie aux utilisateurs du groupe
-    socket.on("chatMessageEventChat", msg => {
-        io.emit(msg.userConv, msg.data);
-    });
-
-    //Reception d'un groupe active et renvoie aux utilisateurs du groupe
-    socket.on('convEnabledEventChat', data => {
-        io.emit(data.id, data.status);
+    socket.on('GroupMessage', data => {
+        io.emit(data.id, data.data);
+        console.log('GroupMessage data = ', data);
     })
 
-    //Reception d'une notification de message en cours et renvoie aux utilisateurs du groupe
-    socket.on('onWritingEventChat', data => {
-        io.emit(data.id, data.status);
+    //Connexion dans un groupe
+    socket.on('GroupConnect', data => {
+        io.emit(data.id, data.data);
+        console.log('GroupConnect data = ', data);
+    })
+
+    //Deconnexion dans un groupe
+    socket.on('GroupDisconnect', data => {
+        io.emit(data.id, data.data);
+        console.log('GroupDisconnect data = ', data);
     })
 
 
